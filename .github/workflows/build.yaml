@@ -16,7 +16,7 @@ jobs:
           g++ -O3 -flto -funroll-loops -fno-rtti -fno-exceptions -std=c++17 pathfinder.cpp -o pathfinder.exe
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: pathfinder-windows
           path: pathfinder.exe
