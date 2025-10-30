@@ -1,0 +1,22 @@
+name: Build Pathfinder
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build optimized executable
+        run: |
+          g++ -O3 -flto -funroll-loops -fno-rtti -fno-exceptions -std=c++17 pathfinder.cpp -o pathfinder.exe
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: pathfinder-windows
+          path: pathfinder.exe
